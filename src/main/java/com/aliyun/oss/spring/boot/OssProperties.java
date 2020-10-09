@@ -45,6 +45,8 @@ public class OssProperties {
      * docs</a>.
      */
     private String endpoint;
+    
+    private String bucketName = "<default>";
 
     /**
      * alibaba cloud access key.
@@ -93,8 +95,16 @@ public class OssProperties {
     public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
+    
+    public String getBucketName() {
+		return bucketName;
+	}
 
-    public String getAccessKey() {
+	public void setBucketName(String bucketName) {
+		this.bucketName = bucketName;
+	}
+
+	public String getAccessKey() {
 		return accessKey;
 	}
 
@@ -126,6 +136,10 @@ public class OssProperties {
 
         private String securityToken;
 
+        private String roleArn = "<role-arn>";
+    	
+        private String roleSessionName = "<session-name>";
+    	
         public String getAccessKey() {
             return accessKey;
         }
@@ -149,6 +163,22 @@ public class OssProperties {
         public void setSecurityToken(String securityToken) {
             this.securityToken = securityToken;
         }
+
+		public String getRoleArn() {
+			return roleArn;
+		}
+
+		public void setRoleArn(String roleArn) {
+			this.roleArn = roleArn;
+		}
+
+		public String getRoleSessionName() {
+			return roleSessionName;
+		}
+
+		public void setRoleSessionName(String roleSessionName) {
+			this.roleSessionName = roleSessionName;
+		}
 
     }
 
