@@ -88,5 +88,10 @@ public class OssAutoConfiguration {
 			throw new IllegalArgumentException("Unknown auth mode.");
 		}
 	}
-
+	
+	@Bean
+	public OssTemplate ossTemplate(OSS ossClient) {
+		return new OssTemplate(ossClient);
+	}
+	
 }
