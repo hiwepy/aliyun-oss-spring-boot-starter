@@ -41,6 +41,8 @@ public class OssProperties {
 
     private boolean enabled;
     
+	private String bucket;
+    
     /**
      * Endpoint, please see <a href=
      * "https://help.aliyun.com/document_detail/32010.html?spm=a2c4g.11186623.6.659.29f145dc3KOwTh">oss
@@ -88,6 +90,14 @@ public class OssProperties {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	public String getBucket() {
+		return bucket;
+	}
+
+	public void setBucket(String bucket) {
+		this.bucket = bucket;
 	}
 
 	public ClientBuilderConfiguration getConfig() {
