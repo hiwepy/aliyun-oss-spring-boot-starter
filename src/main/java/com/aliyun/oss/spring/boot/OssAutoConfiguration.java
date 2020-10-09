@@ -24,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
@@ -42,6 +43,7 @@ import com.aliyun.oss.spring.boot.resource.OssStorageProtocolResolver;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(OSS.class)
 @ConditionalOnProperty(name = OssConstants.ENABLED, havingValue = "true", matchIfMissing = true)
+@EnableConfigurationProperties(OssProperties.class)
 public class OssAutoConfiguration {
 
 	@Bean
