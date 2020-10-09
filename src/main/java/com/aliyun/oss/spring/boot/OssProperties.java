@@ -39,6 +39,8 @@ public class OssProperties {
     @Value("${" + OssConstants.PREFIX + ".authorization-mode:AK_SK}")
     private OssAuthorizationMode authorizationMode;
 
+    private boolean enabled;
+    
     /**
      * Endpoint, please see <a href=
      * "https://help.aliyun.com/document_detail/32010.html?spm=a2c4g.11186623.6.659.29f145dc3KOwTh">oss
@@ -80,7 +82,15 @@ public class OssProperties {
         this.authorizationMode = authorizationMode;
     }
 
-    public ClientBuilderConfiguration getConfig() {
+    public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public ClientBuilderConfiguration getConfig() {
         return config;
     }
 
