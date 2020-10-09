@@ -16,26 +16,17 @@ public class OssTemplate {
 	public OssTemplate(OSS ossClient) {
 		this.ossClient = ossClient;
 	}
-	
-	/**
-	 * 判断当前时间距离第二天凌晨的秒数
-	 * 
-	 * @return 返回值单位为[s:秒]
-	 */
-	private long getSecondsNextEarlyMorning() {
+
+	public String getAccsssURL(String bucket, String path) throws Exception {
+		// 过期时间为当日23:59:59
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.DAY_OF_YEAR, 1);
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.MILLISECOND, 0);
-		return (cal.getTimeInMillis() - System.currentTimeMillis()) / 1000;
-	}
-
-	public String getAccsssURL(String group, String path) throws Exception {
-		// 过期时间为当日23:59:59
-		Date expiration = new Date(getSecondsNextEarlyMorning());
-		return getOssClient().generatePresignedUrl(group, path, expiration).toString();
+		Date expiration = new Date(cal.getTimeInMillis());
+		return getOssClient().generatePresignedUrl(bucket, path, expiration).toString();
 	}
 	
 	public String getAccsssURL(OssStorePath storePath) throws Exception {
