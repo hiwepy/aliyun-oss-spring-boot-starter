@@ -1,0 +1,6 @@
+aliyun:
+  oss:
+    authorization-mode: ak-sk
+    endpoint: hz.aliyuncs.com
+    access-key: test
+    secret-key: test    
