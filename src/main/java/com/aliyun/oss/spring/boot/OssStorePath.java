@@ -10,37 +10,18 @@ public class OssStorePath {
 
     private String path;
 
-	/**
-	 * 缩略图访问地址（图片类型文件）
-	 */
-	private String thumb;
+    private String thumb;
 
-    /**
-     * 存储文件路径
-     */
     public OssStorePath() {
         super();
     }
 
-    /**
-     * 存储文件路径
-     *
-     * @param bucket
-     * @param path
-     */
     public OssStorePath(String bucket, String path) {
         super();
         this.bucket = bucket;
         this.path = path;
     }
 
-    /**
-     * 存储文件路径
-     *
-     * @param bucket
-     * @param path
-     * @param thum
-     */
     public OssStorePath(String bucket, String path, String thumb) {
         super();
         this.bucket = bucket;
