@@ -70,17 +70,17 @@ public class OssAutoConfiguration {
 		if (ossProperties.getAuthorizationMode() == OssAuthorizationMode.AK_SK) {
 			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getEndpoint()), "Oss endpoint can't be empty.");
 			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getAccessKey()),
-					"${alibaba.cloud.access-key} can't be empty.");
+					"Oss Access key can't be empty.");
 			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getSecretKey()),
-					"${alibaba.cloud.secret-key} can't be empty.");
+					"Oss Secret key can't be empty.");
 			return new OSSClientBuilder().build(ossProperties.getEndpoint(), ossProperties.getAccessKey(),
 					ossProperties.getSecretKey(), ossProperties.getConfig());
 		} else if (ossProperties.getAuthorizationMode() == OssAuthorizationMode.STS) {
 			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getEndpoint()), "Oss endpoint can't be empty.");
-			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getSts().getAccessKey()), "Access key can't be empty.");
-			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getSts().getSecretKey()), "Secret key can't be empty.");
+			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getSts().getAccessKey()), "Sts Access key can't be empty.");
+			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getSts().getSecretKey()), "Sts Secret key can't be empty.");
 			Assert.isTrue(!StringUtils.isEmpty(ossProperties.getSts().getSecurityToken()),
-					"Security Token can't be empty.");
+					"Sts Security Token can't be empty.");
 			return new OSSClientBuilder().build(ossProperties.getEndpoint(), ossProperties.getSts().getAccessKey(),
 					ossProperties.getSts().getSecretKey(), ossProperties.getSts().getSecurityToken(),
 					ossProperties.getConfig());
