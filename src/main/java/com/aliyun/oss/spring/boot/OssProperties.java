@@ -150,6 +150,13 @@ public class OssProperties {
 
     public static class StsToken {
 
+    	/**
+         * STS Endpoint, please see <a href=
+         * "https://help.aliyun.com/document_detail/28756.html?spm=a2c4g.11186623.6.791.62d327f1QNuJxZ">STS
+         * Docs</a>.
+         */
+        private String endpoint;
+        
         private String accessKey;
 
         private String secretKey;
@@ -160,7 +167,15 @@ public class OssProperties {
     	
         private String roleSessionName = "<session-name>";
     	
-        public String getAccessKey() {
+        public String getEndpoint() {
+			return endpoint;
+		}
+
+		public void setEndpoint(String endpoint) {
+			this.endpoint = endpoint;
+		}
+
+		public String getAccessKey() {
             return accessKey;
         }
 
