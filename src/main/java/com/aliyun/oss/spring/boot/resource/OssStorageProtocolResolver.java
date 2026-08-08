@@ -32,6 +32,8 @@ import org.springframework.core.io.ResourceLoader;
  * A {@link ProtocolResolver} implementation for the {@code oss://} protocol.
  *
  * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  */
 public class OssStorageProtocolResolver
 		implements ProtocolResolver, BeanFactoryPostProcessor, ResourceLoaderAware {
@@ -48,6 +50,10 @@ public class OssStorageProtocolResolver
 
 	private OSS oss;
 
+	/**
+	 * Lazily resolves the {@link OSS} client from the bean factory.
+	 * @return the OSS client
+	 */
 	private OSS getOSS() {
 		if (this.oss == null) {
 			if (this.beanFactory.getBeansOfType(OSS.class).size() > 1) {
@@ -60,6 +66,12 @@ public class OssStorageProtocolResolver
 		return this.oss;
 	}
 
+	/**
+	 * Resolves the given location into an OSS resource when it uses the {@code oss://} protocol.
+	 * @param location the resource location
+	 * @param resourceLoader the resource loader (unused)
+	 * @return the {@link OssStorageResource}, or {@code null} when the protocol does not match
+	 */
 	@Override
 	public Resource resolve(String location, ResourceLoader resourceLoader) {
 		if (!location.startsWith(PROTOCOL)) {
@@ -68,6 +80,10 @@ public class OssStorageProtocolResolver
 		return new OssStorageResource(getOSS(), location, beanFactory);
 	}
 
+	/**
+	 * Registers this resolver with the default resource loader when applicable.
+	 * @param resourceLoader the resource loader to register with
+	 */
 	@Override
 	public void setResourceLoader(ResourceLoader resourceLoader) {
 		if (DefaultResourceLoader.class.isAssignableFrom(resourceLoader.getClass())) {

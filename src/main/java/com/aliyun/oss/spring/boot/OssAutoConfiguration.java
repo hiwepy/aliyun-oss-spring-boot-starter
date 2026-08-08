@@ -39,6 +39,8 @@ import com.aliyun.oss.spring.boot.resource.OssStorageProtocolResolver;
  * OSS Auto {@link Configuration}.
  *
  * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(OSS.class)
@@ -46,24 +48,41 @@ import com.aliyun.oss.spring.boot.resource.OssStorageProtocolResolver;
 @EnableConfigurationProperties(OssProperties.class)
 public class OssAutoConfiguration {
 
+	/**
+	 * Registers the {@code oss://} protocol resolver.
+	 * @return the OSS storage protocol resolver
+	 */
 	@Bean
 	@ConditionalOnMissingBean
 	public OssStorageProtocolResolver ossStorageProtocolResolver() {
 		return new OssStorageProtocolResolver();
 	}
 
+	/**
+	 * Creates the shared OSS task executor used for asynchronous resource operations.
+	 * @return the OSS task executor
+	 */
 	@Bean(name = OssConstants.OSS_TASK_EXECUTOR_BEAN_NAME)
 	@ConditionalOnMissingBean
 	public ExecutorService ossTaskExecutor() {
 		int coreSize = Runtime.getRuntime().availableProcessors();
 		return new ThreadPoolExecutor(coreSize, 128, 60, TimeUnit.SECONDS, new SynchronousQueue<>());
 	}
-	
+
+	/**
+	 * Registers the listener that shuts down OSS clients on context close.
+	 * @return the OSS application listener
+	 */
 	@Bean
 	public OssApplicationListener ossApplicationListener() {
 		return new OssApplicationListener();
 	}
 
+	/**
+	 * Creates the {@link OSS} client from the configured authorisation mode.
+	 * @param ossProperties the OSS properties
+	 * @return the OSS client
+	 */
 	@ConditionalOnMissingBean
 	@Bean
 	public OSS ossClient(OssProperties ossProperties) {
@@ -89,9 +108,14 @@ public class OssAutoConfiguration {
 		}
 	}
 	
+	/**
+	 * Creates the {@link OssTemplate} helper bean.
+	 * @param ossClient the OSS client
+	 * @return the OSS template
+	 */
 	@Bean
 	public OssTemplate ossTemplate(OSS ossClient) {
 		return new OssTemplate(ossClient);
 	}
-	
+
 }

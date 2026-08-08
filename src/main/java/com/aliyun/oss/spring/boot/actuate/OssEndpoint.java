@@ -16,6 +16,8 @@ import java.util.Map;
  * Actuator {@link Endpoint} to expose OSS Meta Data.
  *
  * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  */
 @Endpoint(id = "oss")
 public class OssEndpoint {
@@ -23,6 +25,10 @@ public class OssEndpoint {
 	@Autowired
 	private ApplicationContext applicationContext;
 
+	/**
+	 * Reads the metadata of all {@link OSSClient} beans in the context.
+	 * @return a map containing the client count and per-client metadata
+	 */
 	@ReadOperation
 	public Map<String, Object> invoke() {
 		Map<String, Object> result = new HashMap<>();

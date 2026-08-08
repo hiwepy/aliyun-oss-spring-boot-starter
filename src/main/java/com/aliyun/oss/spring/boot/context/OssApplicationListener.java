@@ -29,12 +29,18 @@ import java.util.Map;
  * {@link ApplicationListener}.
  *
  * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  */
 public class OssApplicationListener implements ApplicationListener<ContextClosedEvent> {
 
 	private static final Logger log = LoggerFactory
 			.getLogger(OssApplicationListener.class);
 
+	/**
+	 * Shuts down every {@link OSS} bean when the application context is closed.
+	 * @param event the context-closed event
+	 */
 	@Override
 	public void onApplicationEvent(ContextClosedEvent event) {
 		Map<String, OSS> ossClientMap = event.getApplicationContext()

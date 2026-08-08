@@ -51,6 +51,8 @@ import com.aliyun.oss.spring.boot.OssConstants;
  * OSSObject.
  *
  * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  * @see OSS
  * @see Bucket
  * @see OSSObject
@@ -60,27 +62,50 @@ public class OssStorageResource implements WritableResource {
     private static final Logger logger = LoggerFactory
             .getLogger(OssStorageResource.class);
 
+    /** OSS error message returned when an object key does not exist. */
     private static final String MESSAGE_KEY_NOT_EXIST = "The specified key does not exist.";
 
+    /** The underlying OSS client. */
     private final OSS oss;
 
+    /** The bucket name parsed from the resource location. */
     private final String bucketName;
 
+    /** The object key parsed from the resource location. */
     private final String objectKey;
 
+    /** The full {@code oss://} location. */
     private final URI location;
 
+    /** Whether to auto-create non-existent objects on write. */
     private final boolean autoCreateFiles;
 
+    /** Executor used to stream object content on write. */
     private final ExecutorService ossTaskExecutor;
 
+    /** The bean factory used to resolve the OSS task executor. */
     private final ConfigurableListableBeanFactory beanFactory;
 
+    /**
+     * Creates an OSS resource handle; equivalent to calling
+     * {@link #OssStorageResource(OSS, String, ConfigurableListableBeanFactory, boolean)}
+     * with {@code autoCreateFiles = false}.
+     * @param oss the OSS client
+     * @param location the {@code oss://} location
+     * @param beanFactory the bean factory used to resolve the OSS task executor
+     */
     public OssStorageResource(OSS oss, String location,
                               ConfigurableListableBeanFactory beanFactory) {
         this(oss, location, beanFactory, false);
     }
 
+    /**
+     * Creates an OSS resource handle.
+     * @param oss the OSS client
+     * @param location the {@code oss://} location
+     * @param beanFactory the bean factory used to resolve the OSS task executor
+     * @param autoCreateFiles whether to auto-create non-existent objects on write
+     */
     public OssStorageResource(OSS oss, String location,
                               ConfigurableListableBeanFactory beanFactory, boolean autoCreateFiles) {
         Assert.notNull(oss, "Object Storage Service can not be null");

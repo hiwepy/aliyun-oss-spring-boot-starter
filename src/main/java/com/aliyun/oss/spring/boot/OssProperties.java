@@ -27,6 +27,8 @@ import com.aliyun.oss.ClientBuilderConfiguration;
  *
  * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
  * @author xiaolongzuo
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  */
 @ConfigurationProperties(OssConstants.PREFIX)
 public class OssProperties {
@@ -39,17 +41,20 @@ public class OssProperties {
     @Value("${" + OssConstants.PREFIX + ".authorization-mode:AK_SK}")
     private OssAuthorizationMode authorizationMode;
 
+    /** Whether the OSS auto-configuration is enabled. */
     private boolean enabled;
-    
+
+    /** Default OSS bucket. */
 	private String bucket;
-    
+
     /**
      * Endpoint, please see <a href=
      * "https://help.aliyun.com/document_detail/32010.html?spm=a2c4g.11186623.6.659.29f145dc3KOwTh">oss
      * docs</a>.
      */
     private String endpoint;
-    
+
+    /** Logical bucket name. Defaults to {@code <default>}. */
     private String bucketName = "<default>";
 
     /**
@@ -61,7 +66,7 @@ public class OssProperties {
      * alibaba cloud secret key.
      */
     private String secretKey;
-    
+
     /**
      * Sts token, please see <a href=
      * "https://help.aliyun.com/document_detail/32010.html?spm=a2c4g.11186623.6.659.29f145dc3KOwTh">oss
@@ -148,6 +153,7 @@ public class OssProperties {
         this.sts = sts;
     }
 
+    /** Security Token Service (STS) credentials used by the {@link OssAuthorizationMode#STS} mode. */
     public static class StsToken {
 
     	/**
@@ -156,15 +162,20 @@ public class OssProperties {
          * Docs</a>.
          */
         private String endpoint;
-        
+
+        /** Temporary access key id issued by STS. */
         private String accessKey;
 
+        /** Temporary access key secret issued by STS. */
         private String secretKey;
 
+        /** Temporary security token issued by STS. */
         private String securityToken;
 
+        /** ARN of the role assumed for the STS session. Defaults to {@code <role-arn>}. */
         private String roleArn = "<role-arn>";
-    	
+
+        /** Name of the STS role session. Defaults to {@code <session-name>}. */
         private String roleSessionName = "<session-name>";
     	
         public String getEndpoint() {
