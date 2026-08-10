@@ -31,7 +31,7 @@ import org.springframework.core.io.ResourceLoader;
 /**
  * A {@link ProtocolResolver} implementation for the {@code oss://} protocol.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class OssStorageProtocolResolver
 		implements ProtocolResolver, BeanFactoryPostProcessor, ResourceLoaderAware {
