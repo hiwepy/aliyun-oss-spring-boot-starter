@@ -13,7 +13,7 @@ import com.aliyun.oss.spring.boot.actuate.OssEndpoint;
 /**
  * OSS {@link Endpoint} Auto-{@link Configuration}.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 @ConditionalOnClass(Endpoint.class)
 public class OssEndpointAutoConfiguration {

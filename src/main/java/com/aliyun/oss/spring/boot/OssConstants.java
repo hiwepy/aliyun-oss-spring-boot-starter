@@ -19,7 +19,7 @@ package com.aliyun.oss.spring.boot;
 /**
  * OSS constants.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public final class OssConstants {
 

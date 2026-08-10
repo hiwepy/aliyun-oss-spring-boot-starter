@@ -50,7 +50,7 @@ import com.aliyun.oss.spring.boot.OssConstants;
  * Service (OSS). An instance of this class represents a handle to a bucket or an
  * OSSObject.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @see OSS
  * @see Bucket
  * @see OSSObject
