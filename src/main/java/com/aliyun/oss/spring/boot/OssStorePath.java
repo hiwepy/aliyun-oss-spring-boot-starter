@@ -7,7 +7,7 @@ package com.aliyun.oss.spring.boot;
 /**
  * Stores the OSS bucket and object path (plus optional thumbnail path) of an uploaded resource.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class OssStorePath {

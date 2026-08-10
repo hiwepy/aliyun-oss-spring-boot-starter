@@ -15,8 +15,8 @@ import java.util.Map;
 /**
  * Actuator {@link Endpoint} to expose OSS Meta Data.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Endpoint(id = "oss")

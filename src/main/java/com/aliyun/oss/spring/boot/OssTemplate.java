@@ -12,7 +12,7 @@ import com.aliyun.oss.OSS;
 /**
  * Helper for generating pre-signed access URLs for OSS objects.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class OssTemplate {

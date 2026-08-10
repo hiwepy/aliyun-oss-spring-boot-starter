@@ -38,8 +38,8 @@ import com.aliyun.oss.spring.boot.resource.OssStorageProtocolResolver;
 /**
  * OSS Auto {@link Configuration}.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration(proxyBeanMethods = false)
