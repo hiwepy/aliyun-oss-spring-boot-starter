@@ -25,7 +25,7 @@ import com.aliyun.oss.ClientBuilderConfiguration;
 /**
  * {@link ConfigurationProperties} for configuring OSS.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @author xiaolongzuo
  */
 @ConfigurationProperties(OssConstants.PREFIX)

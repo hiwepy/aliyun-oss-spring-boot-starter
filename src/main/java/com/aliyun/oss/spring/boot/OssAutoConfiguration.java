@@ -38,7 +38,7 @@ import com.aliyun.oss.spring.boot.resource.OssStorageProtocolResolver;
 /**
  * OSS Auto {@link Configuration}.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(OSS.class)
