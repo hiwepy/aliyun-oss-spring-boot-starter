@@ -28,7 +28,7 @@ import java.util.Map;
  * Shutdown All OSS Clients when {@code ApplicationContext} gets closed
  * {@link ApplicationListener}.
  *
- * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class OssApplicationListener implements ApplicationListener<ContextClosedEvent> {
 
