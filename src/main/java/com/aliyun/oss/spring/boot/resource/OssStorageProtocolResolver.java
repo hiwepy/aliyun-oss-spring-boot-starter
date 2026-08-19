@@ -96,6 +96,11 @@ public class OssStorageProtocolResolver
 	}
 
 	@Override
+	/**
+	 * post Process Bean Factory.
+	 *
+	 * @param beanFactory the bean factory
+	 */
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
 			throws BeansException {
 		this.beanFactory = beanFactory;

@@ -132,11 +132,21 @@ public class OssStorageResource implements WritableResource {
                 ExecutorService.class);
     }
 
+    /**
+     * Returns the auto create files.
+     *
+     * @return the auto create files
+     */
     public boolean isAutoCreateFiles() {
         return this.autoCreateFiles;
     }
 
     @Override
+    /**
+     * exists.
+     *
+     * @return the result
+     */
     public boolean exists() {
         try {
             return isBucket() ? getBucket() != null : getOSSObject() != null;
@@ -158,17 +168,35 @@ public class OssStorageResource implements WritableResource {
     }
 
     @Override
+    /**
+     * Returns the u r i.
+     *
+     * @return the u r i
+     * @throws IOException if an error occurs
+     */
     public URI getURI() throws IOException {
         return this.location;
     }
 
     @Override
+    /**
+     * Returns the file.
+     *
+     * @return the file
+     * @throws IOException if an error occurs
+     */
     public File getFile() throws IOException {
         throw new UnsupportedOperationException(
                 getDescription() + " cannot be resolved to absolute file path");
     }
 
     @Override
+    /**
+     * content Length.
+     *
+     * @return the result
+     * @throws IOException if an error occurs
+     */
     public long contentLength() throws IOException {
         assertExisted();
         if (isBucket()) {
@@ -178,6 +206,12 @@ public class OssStorageResource implements WritableResource {
     }
 
     @Override
+    /**
+     * last Modified.
+     *
+     * @return the result
+     * @throws IOException if an error occurs
+     */
     public long lastModified() throws IOException {
         assertExisted();
         if (isBucket()) {
@@ -187,22 +221,45 @@ public class OssStorageResource implements WritableResource {
     }
 
     @Override
+    /**
+     * create Relative.
+     *
+     * @param relativePath the relative path
+     * @return the result
+     * @throws IOException if an error occurs
+     */
     public Resource createRelative(String relativePath) throws IOException {
         return new OssStorageResource(this.oss,
                 this.location.resolve(relativePath).toString(), this.beanFactory);
     }
 
     @Override
+    /**
+     * Returns the filename.
+     *
+     * @return the filename
+     */
     public String getFilename() {
         return isBucket() ? this.bucketName : this.objectKey;
     }
 
     @Override
+    /**
+     * Returns the description.
+     *
+     * @return the description
+     */
     public String getDescription() {
         return this.location.toString();
     }
 
     @Override
+    /**
+     * Returns the input stream.
+     *
+     * @return the input stream
+     * @throws IOException if an error occurs
+     */
     public InputStream getInputStream() throws IOException {
         assertExisted();
         if (isBucket()) {
@@ -270,6 +327,11 @@ public class OssStorageResource implements WritableResource {
     }
 
     @Override
+    /**
+     * Returns the writable.
+     *
+     * @return the writable
+     */
     public boolean isWritable() {
         return !isBucket() && (this.autoCreateFiles || exists());
     }
